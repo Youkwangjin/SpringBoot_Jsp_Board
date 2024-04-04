@@ -1,0 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<html>
+<head>
+    <title>메인 홈페이지</title>
+</head>
+<body>
+<h3>메인 홈페이지</h3>
+<a href="/register">회원가입</a><br/>
+<a href="/login">로그인</a>
+</body>
+</html>
