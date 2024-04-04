@@ -1,0 +1,17 @@
+package com.spring.lots.board.dto.board;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Setter
+@Getter
+@ToString
+public class BoardFileDTO {
+
+    private Long id;
+    private Long boardId;
+    private String originalFileName;
+    private String storedFileName;
+
+}
