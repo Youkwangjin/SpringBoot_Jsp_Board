@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-12">
             <h3 style="text-align: center;">게시판</h3>
-            <a href="/board/write" class="btn btn-primary">게시글 작성하기</a><br/><br/>
+            <a href="${pageContext.request.contextPath}/board/write" class="btn btn-primary">게시글 작성하기</a><br/><br/>
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -33,8 +33,6 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <!-- 페이지네이션 부분 시작 -->
-            <!-- 페이지네이션 부분 끝 -->
         </div>
     </div>
 </div>

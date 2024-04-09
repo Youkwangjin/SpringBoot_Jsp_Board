@@ -5,7 +5,7 @@
 </head>
 <body>
 <h3>메인 홈페이지</h3>
-<a href="/register">회원가입</a><br/>
-<a href="/login">로그인</a>
+<a href="${pageContext.request.contextPath}/register">회원가입</a><br/>
+<a href="${pageContext.request.contextPath}/login">로그인</a>
 </body>
 </html>

@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form action="/mypage" method="post" class="mt-5">
+            <form action="${pageContext.request.contextPath}/mypage" method="post" class="mt-5">
                 <h2 class="text-center mb-4">로그인</h2>
                 <div class="form-group">
                     <label for="memberEmail">이메일</label>
