@@ -20,27 +20,46 @@ public class BoardController {
 
     private final BoardService boardService;
 
+    // 게시판 목록
     @GetMapping("/board/list")
-    public String boardList(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum, Model model) {
-        /*
-            한 페이지당 게시물 5개 설정, 전체 게시글 수 조회
-            총 페이지 수 계산과 현재 페이지에 해당하는 게시글 목록 조회
-         */
-        int pageSize = 5;
-        int totalBoardCount = boardService.getTotalBoardCount();
-        int totalPages = (int) Math.ceil((double) totalBoardCount / pageSize);
-        List<BoardDTO> boardDTOList = boardService.boardList(pageNum, pageSize);
+    public String boardList(Model model) {
+        List<BoardDTO> boardDTOList = boardService.boardList();
         model.addAttribute("boardList", boardDTOList);
-        model.addAttribute("totalPages", totalPages);
-        model.addAttribute("currentPage", pageNum);
         return "board/board-list";
     }
-
+    
+    // 게시물 작성
     @GetMapping("/board/write")
     public String boardWritePage() {
         return "board/board-write";
     }
+    
+    // 게시글 상세
+    @GetMapping("/board/detail")
+    public String boardDetailPage(@RequestParam ("id") Long id, Model model) {
+        boardService.updateHits(id);
+        BoardDTO boardDTO = boardService.findById(id);
+        model.addAttribute("boardList", boardDTO);
+        return "board/board-detail";
+    }
 
+    // 게시글 수정글 상세
+    @GetMapping("/board/update")
+    public String boardUpdatePage(@RequestParam ("id") Long id, Model model) {
+        BoardDTO boardDTO = boardService.findById(id);
+        model.addAttribute("boardList", boardDTO);
+        return "board/board-update";
+    }
+
+    // 게시글 삭제글 상세
+    @GetMapping("/board/delete")
+    public String boardDeletePage(@RequestParam ("id") Long id, Model model) {
+        BoardDTO boardDTO = boardService.findById(id);
+        model.addAttribute("boardList", boardDTO);
+        return "board/board-delete";
+    }
+    
+    // 게시글 작성
     @PostMapping("/board/save")
     @ResponseBody
     public ResponseEntity<?> boardSave(@ModelAttribute BoardDTO boardDTO, HttpSession session) throws IOException {
@@ -52,7 +71,23 @@ public class BoardController {
             boardService.boardSave(boardDTO);
             return ResponseEntity.ok().body("성공");
         }
-
     }
 
+    // 게시글 수정
+    @PostMapping("/board/update")
+    @ResponseBody
+    public ResponseEntity<?> boardUpdate(@ModelAttribute BoardDTO boardDTO, Model model) {
+        boardService.boardUpdate(boardDTO);
+        BoardDTO dto = boardService.findById(boardDTO.getId());
+        model.addAttribute("boardList", dto);
+        return ResponseEntity.ok().body("수정 성공");
+    }
+
+    // 게시글 삭제
+    @PostMapping("/board/delete")
+    @ResponseBody
+    public ResponseEntity<?> boardDelete(@RequestParam("id") Long id) {
+        boardService.boardDelete(id);
+        return ResponseEntity.ok().body("삭제 성공");
+    }
 }

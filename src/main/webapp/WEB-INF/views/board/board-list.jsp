@@ -25,7 +25,9 @@
                 <c:forEach var="board" items="${boardList}">
                     <tr>
                         <td>${board.id}</td>
-                        <td><a href="/board/detail/${board.id}">${board.boardTitle}</a></td>
+                        <td>
+                            <a href="${pageContext.request.contextPath}/board/detail?id=${board.id}">${board.boardTitle}</a>
+                        </td>
                         <td>${board.boardWriter}</td>
                         <td>${board.boardCreated}</td>
                         <td>${board.boardHits}</td>

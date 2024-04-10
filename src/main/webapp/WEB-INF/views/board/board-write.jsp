@@ -43,7 +43,7 @@
             <td>비밀번호</td>
             <td>
                 <label>
-                    <input type="text" name="boardPassword"/>
+                    <input type="password" name="boardPassword"/>
                 </label>
             </td>
         </tr>
