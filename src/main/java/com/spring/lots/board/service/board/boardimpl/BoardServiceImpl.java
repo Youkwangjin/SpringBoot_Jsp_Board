@@ -42,12 +42,27 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public int getTotalBoardCount() {
-        return boardRepository.getTotalBoardCount();
+    public List<BoardDTO> boardList() {
+        return boardRepository.boardList();
     }
 
     @Override
-    public List<BoardDTO> boardList(int pageNum, int pageSize) {
-        return boardRepository.boardList(pageNum, pageSize);
+    public BoardDTO findById(Long id) {
+        return boardRepository.findById(id);
+    }
+
+    @Override
+    public void updateHits(Long id) {
+        boardRepository.updateHits(id);
+    }
+
+    @Override
+    public void boardUpdate(BoardDTO boardDTO) {
+        boardRepository.boardUpdate(boardDTO);
+    }
+
+    @Override
+    public void boardDelete(Long id) {
+        boardRepository.boardDelete(id);
     }
 }

@@ -11,7 +11,13 @@ public interface BoardService {
 
     void boardSave(BoardDTO boardDTO) throws IOException;
 
-    int getTotalBoardCount();
+    List<BoardDTO> boardList();
 
-    List<BoardDTO> boardList(int pageNum, int pageSize);
+    BoardDTO findById(Long id);
+
+    void updateHits(Long id);
+
+    void boardUpdate(BoardDTO boardDTO);
+
+    void boardDelete(Long id);
 }
