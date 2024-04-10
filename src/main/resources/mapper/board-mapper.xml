@@ -12,4 +12,24 @@
         insert into board_file (originalFileName, storedFileName, boardId)
         values (#{originalFileName}, #{storedFileName}, #{boardId})
     </insert>
+    <!-- 게시글 목록 조회 쿼리  -->
+    <select id="list" resultType="board">
+        select id, boardTitle, boardWriter, boardHits, date_format(boardCreated, "%Y-%m-%d") as boardCreated
+        from board order by id
+    </select>
+    <!-- 게시글 상세 조회  -->
+    <select id="findById" parameterType="Long" resultType="board">
+        select * from board where id = #{id}
+    </select>
+    <!-- 게시글 조회수 올리기  -->
+    <update id="updateHits" parameterType="Long">
+        update board set boardHits = boardHits + 1 where id = #{id}
+    </update>
+    <!-- 게시글 수정하기 -->
+    <update id="update" parameterType="board">
+        update board set boardContents = #{boardContents} where id = #{id}
+    </update>
+    <delete id="delete" parameterType="Long">
+        delete from board where id = #{id};
+    </delete>
 </mapper>

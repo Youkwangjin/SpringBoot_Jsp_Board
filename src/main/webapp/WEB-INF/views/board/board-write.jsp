@@ -6,8 +6,8 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('#boardForm').on('submit', function(e) {
+    $(document).ready(function (){
+        $('#boardForm').on('submit', function (e) {
             e.preventDefault();
             let formData = new FormData(this);
             $.ajax({
@@ -16,14 +16,14 @@
                 data: formData,
                 processData: false,
                 contentType: false,
-                success: function() {
-                    alert('게시글이 성공적으로 등록되었습니다.');
+                success: function () {
+                    alert("게시글이 등록되었습니다.");
                     window.location.href = '/board/list';
                 },
-                error: function() {
-                    alert('게시글 등록에 실패하였습니다. 다시 시도해주세요.');
+                error: function () {
+                    alert("서버에 심각한 오류가 발생했습니다. 다시 시도해주세요");
                 }
-            });
+            })
         });
     });
 </script>
@@ -43,7 +43,7 @@
             <td>비밀번호</td>
             <td>
                 <label>
-                    <input type="text" name="boardPassword"/>
+                    <input type="password" name="boardPassword"/>
                 </label>
             </td>
         </tr>
