@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>게시글 상세</title>
@@ -46,7 +47,11 @@
     </tr>
     <tr>
         <td>파일</td>
-        <td>${boardList.boardFile}</td>
+        <td>
+            <c:forEach items="${boardFileList}" var="boardFile">
+                <img src="/upload/${boardFile.storedFileName}" class="img-fluid" alt="${boardFile.originalFileName}">
+            </c:forEach>
+        </td>
     </tr>
     <tr>
         <td colspan="2" style="text-align: center;">

@@ -29,7 +29,7 @@
 </script>
 <body style="margin: 20px;">
 <h3 style="text-align: center;">글 작성하기</h3>
-<form id="boardForm" method="post" enctype="multipart/form-data">
+<form id="boardForm" enctype="multipart/form-data">
     <table style="width: 95%;" class="table">
         <tr>
             <td>작성자</td>
