@@ -34,7 +34,7 @@ public class BoardServiceImpl implements BoardService {
                 boardFileDTO.setOriginalFileName(originalFileName);
                 boardFileDTO.setStoredFileName(storedFileName);
                 boardFileDTO.setBoardId(savedBoard.getId());
-                String savePath = "C:/work/springBoards/src/main/resources/static/spring_img/" + storedFileName;
+                String savePath = "C:/work/board/src/main/resources/static/spring_image/" + storedFileName;
                 boardFile.transferTo(new File(savePath));
                 boardRepository.saveFile(boardFileDTO);
             }
@@ -64,5 +64,10 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public void boardDelete(Long id) {
         boardRepository.boardDelete(id);
+    }
+
+    @Override
+    public List<BoardFileDTO> findFile(Long id) {
+        return boardRepository.findFile(id);
     }
 }

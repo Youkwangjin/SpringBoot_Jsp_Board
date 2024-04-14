@@ -2,6 +2,7 @@ package com.spring.lots.board.controller.board;
 
 
 import com.spring.lots.board.dto.board.BoardDTO;
+import com.spring.lots.board.dto.board.BoardFileDTO;
 import com.spring.lots.board.service.board.BoardService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -40,6 +41,10 @@ public class BoardController {
         boardService.updateHits(id);
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("boardList", boardDTO);
+        if (boardDTO.getFileAttached() == 1) {
+            List<BoardFileDTO> boardFileDTOList = boardService.findFile(id);
+            model.addAttribute("boardFileList", boardFileDTOList);
+        }
         return "board/board-detail";
     }
 

@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
         String resourcePath = "/upload/**";
-        String savePath = "file:///C:/work/springBoards/src/main/resources/static/spring_img/";
+        String savePath = "file:///C:/work/board/src/main/resources/static/spring_image/";
         registry.addResourceHandler(resourcePath)
                 .addResourceLocations(savePath);
     }

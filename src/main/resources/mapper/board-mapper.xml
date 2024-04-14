@@ -21,6 +21,10 @@
     <select id="findById" parameterType="Long" resultType="board">
         select * from board where id = #{id}
     </select>
+    <!-- 게시글 첨부 파일 조회 쿼리 -->
+    <select id="findFile" parameterType="Long" resultType="boardFile">
+        select * from board_file where boardId = #{boardId}
+    </select>
     <!-- 게시글 조회수 올리기  -->
     <update id="updateHits" parameterType="Long">
         update board set boardHits = boardHits + 1 where id = #{id}
