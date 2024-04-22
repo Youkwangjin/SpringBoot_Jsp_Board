@@ -3,6 +3,7 @@ package com.spring.lots.board.controller.board;
 
 import com.spring.lots.board.dto.board.BoardDTO;
 import com.spring.lots.board.dto.board.BoardFileDTO;
+import com.spring.lots.board.dto.board.BoardPageDTO;
 import com.spring.lots.board.service.board.BoardService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,11 +24,19 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    // 게시판 목록
-    @GetMapping("/board/list")
-    public String boardList(Model model) {
-        List<BoardDTO> boardDTOList = boardService.boardList();
+    /**
+     * 게시글 페이징 처리, 처음 페이지는 1페이지를 보여주는 형식
+     * /board/list/paging?page=2
+     * required = false 필수가 아니다.
+     * 1페이지당 보여지는 글 갯수 3개로 설정
+     */
+    @GetMapping("/board/list/paging")
+    public String boardList(@RequestParam(value = "page", required = false, defaultValue = "1")
+                            int page, Model model) {
+        List<BoardDTO> boardDTOList = boardService.boardList(page);
+        BoardPageDTO boardPageDTO = boardService.pagingParam(page);
         model.addAttribute("boardList", boardDTOList);
+        model.addAttribute("boardPageDTO", boardPageDTO);
         return "board/board-list";
     }
     
