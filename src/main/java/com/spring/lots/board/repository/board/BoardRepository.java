@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Repository
@@ -24,9 +25,7 @@ public class BoardRepository {
         sql.insert("Board.boardFile", boardFileDTO);
     }
 
-    public List<BoardDTO> boardList() {
-        return sql.selectList("Board.list");
-    }
+    
 
     public BoardDTO findById(Long id) {
         return sql.selectOne("Board.findById", id);
@@ -46,5 +45,13 @@ public class BoardRepository {
 
     public List<BoardFileDTO> findFile(Long id) {
         return sql.selectList("Board.findFile", id);
+    }
+
+    public List<BoardDTO> boardList(Map<String, Integer> pagingParams) {
+        return sql.selectList("Board.boardList", pagingParams);
+    }
+
+    public int boardCount() {
+        return sql.selectOne("Board.count");
     }
 }

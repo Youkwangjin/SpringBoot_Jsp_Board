@@ -2,6 +2,7 @@ package com.spring.lots.board.service.board;
 
 import com.spring.lots.board.dto.board.BoardDTO;
 import com.spring.lots.board.dto.board.BoardFileDTO;
+import com.spring.lots.board.dto.board.BoardPageDTO;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ public interface BoardService {
 
     void boardSave(BoardDTO boardDTO) throws IOException;
 
-    List<BoardDTO> boardList();
+    List<BoardDTO> boardList(int page);
 
     BoardDTO findById(Long id);
 
@@ -23,4 +24,6 @@ public interface BoardService {
     void boardDelete(Long id);
 
     List<BoardFileDTO> findFile(Long id);
+
+    BoardPageDTO pagingParam(int page);
 }

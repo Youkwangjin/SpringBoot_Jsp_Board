@@ -18,7 +18,7 @@
                 contentType: false,
                 success: function () {
                     alert("게시글이 등록되었습니다.");
-                    window.location.href = '/board/list';
+                    window.location.href = '/board/list/paging';
                 },
                 error: function () {
                     alert("서버에 심각한 오류가 발생했습니다. 다시 시도해주세요");
