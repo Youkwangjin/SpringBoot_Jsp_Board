@@ -35,6 +35,22 @@
                 </c:forEach>
                 </tbody>
             </table>
+            <!-- 페이지 -->
+            <nav aria-label="Page navigation" style="display: flex; justify-content: center;">
+                <ul class="pagination">
+                    <c:if test="${boardPageDTO.startPage > 1}">
+                        <li><a href="${pageContext.request.contextPath}/board/list/paging?page=${boardPageDTO.startPage - 1}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                    </c:if>
+                    <c:forEach begin="${boardPageDTO.startPage}" end="${boardPageDTO.endPage}" var="pageNum">
+                        <li class="${pageNum == boardPageDTO.page ? 'active' : ''}">
+                            <a href="${pageContext.request.contextPath}/board/list/paging?page=${pageNum}">${pageNum}</a>
+                        </li>
+                    </c:forEach>
+                    <c:if test="${boardPageDTO.endPage < boardPageDTO.maxPage}">
+                        <li><a href="${pageContext.request.contextPath}/board/list/paging?page=${boardPageDTO.endPage + 1}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                    </c:if>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>

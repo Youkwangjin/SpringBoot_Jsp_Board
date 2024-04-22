@@ -13,7 +13,7 @@
     }
 
     function backFunc() {
-        location.href = "/board/list";
+        location.href = "/board/list/paging";
     }
 
     function updateFunc() {

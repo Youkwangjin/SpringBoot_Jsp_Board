@@ -5,6 +5,6 @@
 </head>
 <body>
 <h2>${sessionScope.memberName} 님 환영합니다.</h2>
-<a href="/board/list">게시물 목록</a>
+<a href="${pageContext.request.contextPath}/board/list/paging">게시물 목록</a>
 </body>
 </html>
